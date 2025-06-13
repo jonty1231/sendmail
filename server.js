@@ -20,7 +20,9 @@ const verifyServiceSid = process.env.TWILIO_VERIFY_SERVICE_SID;
 const client= twilio(accountSid,authToken)
 
 
-
+app.get("/",async(req,res)=>{
+    return res.json({working:"yes"})
+})
 
 app.post('/api/sendotp',async(req,res)=>{
     try {
