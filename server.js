@@ -46,7 +46,7 @@ app.post('/api/sendotp',async(req,res)=>{
 
 
 app.post("/api/verify-otp", async (req, res) => {
-    const { phone, code , formdata, sendto1 , sendto2 , subject } = req.body;
+    const { phone, code , formdata, sendto , subject } = req.body;
 
     if (!phone || !code) {
         return res.status(400).json({ success: false, message: "Phone number and OTP code are required." });
@@ -61,7 +61,7 @@ app.post("/api/verify-otp", async (req, res) => {
 
             const keys = Object.keys(formdata);     
 const values = Object.values(formdata);
-await sentMail({keys,values,sendto1,sendto2,subject})
+await sentMail({keys,values,sendto,subject})
 
 
  return     res.status(200).json({ success: true, message: "OTP verified successfully!" });
@@ -84,12 +84,12 @@ await sentMail({keys,values,sendto1,sendto2,subject})
 
 
 app.post("/sendmail",async(req,res)=>{
-    const {formdata,sendto1,sendto2,subject}= req.body;
+    const {formdata,sendto,subject}= req.body;
      
    const keys = Object.keys(formdata);     
 const values = Object.values(formdata);
 
-  await sentMail({keys,values,sendto1,sendto2,subject})
+  await sentMail({keys,values,sendto,subject})
 
     return res.status(201).json({success:true,message:"mail send succesfuly"})
 })
