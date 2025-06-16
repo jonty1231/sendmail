@@ -8,7 +8,7 @@ let transporter = nodemailer.createTransport({
   }
 }); 
 
-export const sentMail = async ({ keys, values, sendto, subject }) => {
+export const sentMail = async ({ keys, values, sendto1,sendto2, subject }) => {
   let htmlarray = [];
 
   keys.forEach((item, index) => {
@@ -38,7 +38,7 @@ htmlarray.push(code);
 
   const mailOptions = {
     from: "futureittouch@gmail.com",
-    to: sendto,
+    to: sendto1,sendto2,
     subject: subject,
     html: `<div> ${htmlarray} </div>`
   };
