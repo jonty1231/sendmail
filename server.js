@@ -27,6 +27,9 @@ app.get("/",async(req,res)=>{
 app.post('/api/sendotp',async(req,res)=>{
     try {
         const { phone } = req.body;
+
+                console.log({accountSid,authToken,verifyServiceSid})
+
            if (!phone) {
         return res.status(400).json({ success: false, message: "Phone number is required." });
     }
@@ -37,6 +40,7 @@ app.post('/api/sendotp',async(req,res)=>{
 
         
     } catch (error) {
+        console.log(error)
                 res.status(500).json({ success: false, message: "Failed to send OTP.", error: error.message });
 
     }
