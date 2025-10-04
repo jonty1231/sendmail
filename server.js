@@ -31,7 +31,7 @@ app.post('/api/sendotp',async(req,res)=>{
         return res.status(400).json({ success: false, message: "Phone number is required." });
     }
 
- const verification = await client.verify.services(verifyServiceSid).verifications.create({ to: phone, channel: "sms" });
+ const verification = await client.verify.v2.services(verifyServiceSid).verifications.create({ to: phone, channel: "sms" });
 
  return res.status(200).json({ success: true, message: "OTP sent successfully!", sid: verification.sid });
 
